@@ -2,10 +2,13 @@ package com.storm.MainTest;
 
 import com.storm.pojo.User;
 import com.storm.service.IUserService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -21,21 +24,20 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class TestMyBatis {
     private static Logger logger = LoggerFactory.getLogger(TestMyBatis.class);
-    //  private ApplicationContext ac = null;
+      private ApplicationContext ac = null;
     @Resource
     private IUserService userService = null;
 
-//  @Before
-//  public void before() {
-//      ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-//      userService = (IUserService) ac.getBean("userService");
-//  }
+  @Before
+  public void before() {
+      ac = new ClassPathXmlApplicationContext("spring-mvc.xml");
+      userService = (IUserService) ac.getBean("userService");
+  }
 
     @Test
     public void test1() {
         List<User> user = userService.getUserInfo();
-        // System.out.println(user.getUserName());
-        // logger.info("值："+user.getUserName());
-        //logger.info(JSON.toJSONString(user));
+         System.out.println(user.get(0).getUser_name());
+         logger.info("值："+user.get(0).getUser_name());
     }
 }

@@ -25,7 +25,7 @@ public class UserController {
     private String getUserInfo(Model model) {
         List<User> listUser = userService.getUserInfo();
         System.out.println(listUser.get(0).getUser_name());
-        logger.info("Öµ£º" + listUser.get(0).getUser_name());
+        logger.info("å€¼ï¼š" + listUser.get(0).getUser_name());
         model.addAttribute("user", listUser.get(0));
         return "index";
     }

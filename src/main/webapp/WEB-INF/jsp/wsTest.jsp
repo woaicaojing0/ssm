@@ -41,7 +41,6 @@
                 alert("连接已关闭...");
             };
         }
-
         else {
             // 浏览器不支持 WebSocket
             alert("您的浏览器不支持 WebSocket!");
